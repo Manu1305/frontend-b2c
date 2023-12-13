@@ -31,6 +31,7 @@ export default function SignUp() {
           email: email,
           phone: phone,
           password: password,
+          type:'user'
         })
         .then((response) => {
           console.log(response);
@@ -155,7 +156,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link to="/">Already have an account? Log In</Link>
+                <Link to="/login">Already have an account? Log In</Link>
               </Grid>
             </Grid>
           </Box>

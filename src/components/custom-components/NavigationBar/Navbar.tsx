@@ -9,7 +9,7 @@ const [Profile, setProfile]=useState<boolean>(false)
   }
   return (
     <div>
-      <header className="shadow-lg py-4 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[70px]">
+      <header className="shadow-lg py-4 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[70px] max-sm:h-4:">
         <div className="flex flex-wrap items-center lg:gap-y-4 gap-y-6 gap-x-4">
           <Link to="" style={{ width: "100px" }}>
             <img
@@ -51,12 +51,12 @@ const [Profile, setProfile]=useState<boolean>(false)
                     <p className="text-sm text-gray-500 mt-1">
                       To access account and manage orders
                     </p>
-                    <button
+                    {/* <button
                       type="button"
                       className="bg-transparent border border-gray-300 hover:border-pink-500 px-4 py-2 mt-4 text-sm text-pink-500 font-semibold"
                     >
                       LOGIN / SIGNUP
-                    </button>
+                    </button> */}
                     <hr className="border-b-0 my-4" />
                     <ul className="space-y-1.5">
                       <li>
@@ -155,14 +155,19 @@ const [Profile, setProfile]=useState<boolean>(false)
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="18px"
-                    height="18px"
-                    viewBox="0 0 489 489"
+                    viewBox="0 0 64 64"
+                    id="logout"
+                    width='18px'
+                    height='18px'
                   >
                     <path
-                      d="m440.1 422.7-28-315.3c-.6-7-6.5-12.3-13.4-12.3h-57.6C340.3 42.5 297.3 0 244.5 0s-95.8 42.5-96.6 95.1H90.3c-7 0-12.8 5.3-13.4 12.3l-28 315.3c0 .4-.1.8-.1 1.2 0 35.9 32.9 65.1 73.4 65.1h244.6c40.5 0 73.4-29.2 73.4-65.1 0-.4 0-.8-.1-1.2zM244.5 27c37.9 0 68.8 30.4 69.6 68.1H174.9c.8-37.7 31.7-68.1 69.6-68.1zm122.3 435H122.2c-25.4 0-46-16.8-46.4-37.5l26.8-302.3h45.2v41c0 7.5 6 13.5 13.5 13.5s13.5-6 13.5-13.5v-41h139.3v41c0 7.5 6 13.5 13.5 13.5s13.5-6 13.5-13.5v-41h45.2l26.9 302.3c-.4 20.7-21.1 37.5-46.4 37.5z"
-                      data-original="#000000"
-                    />
+                      fill="#546e7a"
+                      d="M32 53.46a19.42 19.42 0 0 1-7.3-37.41 1.5 1.5 0 1 1 1.12 2.78A16.42 16.42 0 1 0 40 48.4a1.5 1.5 0 1 1 1.43 2.6A19.4 19.4 0 0 1 32 53.46zm13.19-5.79a1.53 1.53 0 0 1-1-.39 1.5 1.5 0 0 1-.09-2.12 16.42 16.42 0 0 0-5.9-26.33 1.5 1.5 0 1 1 1.12-2.78 19.41 19.41 0 0 1 7 31.14 1.49 1.49 0 0 1-1.13.48z"
+                    ></path>
+                    <path
+                      fill="#ef5350"
+                      d="M32 32.2a1.5 1.5 0 0 1-1.5-1.5V12a1.5 1.5 0 0 1 3 0v18.7a1.5 1.5 0 0 1-1.5 1.5Z"
+                    ></path>
                   </svg>
 
                   <span className="text-xs font-semibold mt-1"> Logout</span>
@@ -184,7 +189,7 @@ const [Profile, setProfile]=useState<boolean>(false)
               </svg>
             </button>
           </div>
-          <ul className="flex lg:ml-14 lg:space-x-8 max-lg:space-y-2 max-lg:block max-lg:w-full">
+          <ul className="flex lg:ml-14 lg:space-x-8 max-lg:space-y-2 max-lg:block max-lg:w-full ">
             <li className="max-lg:border-b max-lg:py-2 relative lg:hover:after:absolute lg:after:bg-pink-500 lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[3px] lg:after:block lg:after:-bottom-2 lg:after:transition-all lg:after:duration-300">
               <Link to="" className="text-[#333] block text-sm font-semibold">
                 Men
@@ -202,21 +207,21 @@ const [Profile, setProfile]=useState<boolean>(false)
             </li>
             <li className="max-lg:border-b max-lg:py-2 relative lg:hover:after:absolute lg:after:bg-blue-500 lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[3px] lg:after:block lg:after:-bottom-2 lg:after:transition-all lg:after:duration-300">
               <Link to=" " className="text-[#333] block text-sm font-semibold">
-                Home & Living
+                New arrivals
               </Link>
             </li>
             <li className="max-lg:border-b max-lg:py-2 relative lg:hover:after:absolute lg:after:bg-yellow-500 lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[3px] lg:after:block lg:after:-bottom-2 lg:after:transition-all lg:after:duration-300">
               <Link to=" " className="text-[#333] block text-sm font-semibold">
-                Beauty
+                best
               </Link>
             </li>
             <li className="max-lg:border-b max-lg:py-2 relative lg:hover:after:absolute lg:after:bg-red-500 lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[3px] lg:after:block lg:after:-bottom-2 lg:after:transition-all lg:after:duration-300">
               <Link to=" " className="text-[#333] block text-sm font-semibold">
-                Studio
+                latest
               </Link>
             </li>
           </ul>
-          <div className="lg:mx-8 max-xl:hidden max-lg:!flex flex items-center bg-gray-100 px-4 h-10 rounded flex-1">
+          <div className="lg:mx-8 max-xl:hidden max-lg:!flex flex items-center bg-gray-100 px-4 h-10 rounded flex-1 max-sm:">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 192.904 192.904"

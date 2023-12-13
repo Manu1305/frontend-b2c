@@ -2,6 +2,9 @@ import React, { useEffect } from 'react'
 import { decodeToken, useJwt } from "react-jwt";
 import {useNavigate} from 'react-router-dom'
 // import { isTokenExpired } from 'react-jwt';
+import LogoSlider from './logoSlider/LogoSlider'
+import Products from '../../custom-components/Products/Products'
+import Hero from './HeroSection/Hero'
 function Home() {
   const navigate =useNavigate()
   useEffect(()=>{
@@ -16,13 +19,18 @@ if(!token){
 }
   },[])
 
-
+ 
 
   return (
     <div>
-      <h2>Hello world</h2>
+      <Hero/>
+      <LogoSlider />
+      <Products />
+      <Products />
+      <Products />
+      <Products />
     </div>
-  )
+  );
 }
 
 export default Home

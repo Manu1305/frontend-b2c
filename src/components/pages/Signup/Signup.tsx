@@ -11,7 +11,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const defaultTheme = createTheme();
@@ -21,6 +21,7 @@ export default function SignUp() {
   const [email, setEmail] = React.useState<string>("");
   const [phone, setPhone] = React.useState<any>();
   const [password, setPassword] = React.useState<string>("");
+  const Navigate =useNavigate()
 
   const handleSignup = async () => {
     console.log(name, email, phone, password);
@@ -37,6 +38,7 @@ export default function SignUp() {
           console.log(response);
           if (response.data.message == "success") {
             alert("successfully registered");
+            Navigate('/login')
           }
         })
         .catch((err) => {

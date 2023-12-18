@@ -14,11 +14,13 @@ function LogoSlider() {
           blurBoderColor={"#fff"}
         >
           <Slider.Slide>
-            <img
-              src="https://i.pinimg.com/originals/01/ca/da/01cada77a0a7d326d85b7969fe26a728.jpg"
-              alt="any"
-              className="w-36"
-            />
+            <div className="	box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);">
+              <img
+                src="https://i.pinimg.com/originals/01/ca/da/01cada77a0a7d326d85b7969fe26a728.jpg"
+                alt="any"
+                className="w-36"
+              />
+            </div>
           </Slider.Slide>
           <Slider.Slide>
             <img
@@ -27,20 +29,7 @@ function LogoSlider() {
               className="w-36"
             />
           </Slider.Slide>
-          <Slider.Slide>
-            <img
-              src="https://blog.hubspot.com/hubfs/image8-2.jpg"
-              alt="any3"
-              className="w-36"
-            />
-          </Slider.Slide>
-          <Slider.Slide>
-            <img
-              src="https://blog.hubspot.com/hubfs/image8-2.jpg"
-              alt="any3"
-              className="w-36"
-            />
-          </Slider.Slide>
+        
         </Slider>
       </div>
     </div>

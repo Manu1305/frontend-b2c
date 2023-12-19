@@ -13,19 +13,32 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import * as Yup from 'yup';
 
 const defaultTheme = createTheme();
 
 export default function SignUp() {
   const [name, setName] = React.useState<string>("");
+  const [lastName,setLastName]=React.useState<string>("")
   const [email, setEmail] = React.useState<string>("");
   const [phone, setPhone] = React.useState<any>();
   const [password, setPassword] = React.useState<string>("");
+  const [errors, setErrors] = React.useState<any>({});
   const Navigate =useNavigate()
 
+
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required('First Name is required'),
+    lastName: Yup.string().required('Last Name is required'),
+    email: Yup.string().email('Invalid email address').required('Email is required'),
+    phone: Yup.string().required('Phone number is required').matches(/^\d+$/, 'Phone number should only contain numbers'),
+    password: Yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
+  });
+
   const handleSignup = async () => {
-    console.log(name, email, phone, password);
+  
     try {
+      await validationSchema.validate({ name, lastName, email, phone, password }, { abortEarly: false });
       await axios
         .post("http://localhost:3000/user/signup", {
           name: name,
@@ -49,8 +62,14 @@ export default function SignUp() {
             alert("Phone number already exist");
           }
         });
-    } catch (error) {
-      console.log(error, "erorrrrrrrrrrrrror");
+    }  catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        const newErrors = {};
+        error.inner.forEach(err => {
+          newErrors[err.path] = err.message;
+        });
+        setErrors(newErrors);
+      }
     }
   };
 
@@ -83,7 +102,18 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    setErrors({ ...errors, name: '' });                    
+                  }}
+                  error={!!errors.name}
+                  helperText={errors.name}
+                  InputLabelProps={{
+                    style: { color: "black" } 
+                  }}
+                  FormHelperTextProps={{ 
+                    style: { textAlign: "right" }
+                  }}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -94,6 +124,18 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  onChange={(e) => {
+                    setLastName(e.target.value);
+                    setErrors({ ...errors, lastName: '' });                    
+                  }}
+                  error={!!errors.lastName}
+                  helperText={errors.lastName}
+                  InputLabelProps={{
+                    style: { color: "black" } 
+                  }}
+                  FormHelperTextProps={{ 
+                    style: { textAlign: "right" }
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -106,22 +148,40 @@ export default function SignUp() {
                   autoComplete="email"
                   onChange={(e) => {
                     setEmail(e.target.value);
+                    setErrors({ ...errors, email: '' });                    
                   }}
+                  error={!!errors.email}
+                  helperText={errors.email}
+                  InputLabelProps={{
+                    style: { color: "black" } 
+                  }}
+                  FormHelperTextProps={{ 
+                    style: { textAlign: "right" }
+                  }}
+                  
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
-                  fullWidth
-                  id="phone"
-                  // label="Phone Number"
-                  name="phone"
-                  autoComplete="phone"
-                  label="Phone number"
-                  type="number"
-                  onChange={(e) => {
-                    setPhone(e.target.value);
-                  }}
+                   required
+                   fullWidth
+                   id="phone"
+                   name="phone"
+                   autoComplete="phone"
+                   label="Phone number"
+                   type="number"
+                   onChange={(e) => {
+                     setPhone(e.target.value);
+                     setErrors({ ...errors, phone: '' });
+                   }}
+                   error={!!errors.phone}
+                   helperText={errors.phone}
+                   InputLabelProps={{
+                     style: { color: "black" } 
+                   }}
+                   FormHelperTextProps={{ 
+                     style: { textAlign: "right" }
+                   }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -135,7 +195,17 @@ export default function SignUp() {
                   autoComplete="new-password"
                   onChange={(e) => {
                     setPassword(e.target.value);
+                    setErrors({ ...errors, password: '' });
                   }}
+                  error={!!errors.password}
+                  helperText={errors.password}
+                  InputLabelProps={{
+                    style: { color: "black" } 
+                  }}
+                  FormHelperTextProps={{ 
+                    style: { textAlign: "right" }
+                  }}
+                  
                 />
               </Grid>
               <Grid item xs={12}>

@@ -1,5 +1,5 @@
 
-import {SignUp,Login,Home} from './components'
+import {SignUp,Login,Home,ViewProduct} from './components'
 import { BrowserRouter,Routes ,Router,Route } from 'react-router-dom'
 import Navbar from './components/custom-components/NavigationBar/Navbar'
 import Footer from './components/custom-components/Footer/Footer';
@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import ShoppingMain from './components/pages/Shopping/Shoppingmain/ShoppingMain';
 import { motion, useScroll } from "framer-motion";
 import Cart from './components/pages/cart/Cart';
+
 
 function App() {
 const [status,setStatus]=useState<boolean>()
@@ -26,8 +27,10 @@ useEffect(() => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          
           <Route path="/" element={<Home />} />
           <Route path="/shopping" element={<ShoppingMain />} />
+          <Route path="/viewproduct" element={<ViewProduct/>}/>
           <Route path="/cart" element={<Cart />} />
         </Routes>
         {status ? <Footer /> : null}

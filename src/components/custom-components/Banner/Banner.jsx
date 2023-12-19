@@ -1,11 +1,12 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import './Bannner.css'
+import './Banner.css'
+import { Fade } from "react-awesome-reveal";
 
 const   Banner = () => {
   const carouselCaptionStyle = {
-    top: "70px",
+    top: "130px",
     left: "100px",
     color: "#fff",
     textAlign: "left",
@@ -13,8 +14,10 @@ const   Banner = () => {
     marginBottom: "5px",
   };
 
+  
   const imageStyle = {
-    height: "60",
+    height: "550px", // Adjust the height as needed
+    width: "500px", // Adjust the width as needed
     objectFit: "cover",
   };
 
@@ -54,62 +57,63 @@ const   Banner = () => {
         <div className="carousel-item active" data-bs-interval="10000">
           <img
             src="https://img.freepik.com/free-photo/front-view-vegetable-composition-with-seasonings-greens-white-background-color-photo-vegetable-healthy-life-salad-meal-ripe_140725-139555.jpg?w=996&t=st=1702533696~exp=1702534296~hmac=e56d475af133d27f9cb3c94d351874d22bbbf5f3a7f25dc4c97672402536b520"
-            className="d-block w-100 img "
+            className="d-block w-100  h-1/5"
             alt="img1"
             style={imageStyle}
           />
           <div className="carousel-caption " style={carouselCaptionStyle}>
-           
+          <Fade top>
               <h2 className="heading">Healthy Vegetables</h2>
               <p className="paragraph1 ">
                 PERFECT <span className="span">BREAKFAST</span>
               </p>
               <p className="paragraph2 "> BEST WEEKLY PRICES</p>
-              <button className="button1" type="button">
+              <button className="bg-green-600 w-40 rounded-md p-2"type="button">
                 Shop Now
               </button>
-    
+              </Fade>
           </div>
         </div>
         <div className="carousel-item" data-bs-interval="2000">
           <img
             src="https://www.shutterstock.com/shutterstock/photos/1939183168/display_1500/stock-photo-delicious-lemon-curd-and-fresh-fruits-on-light-grey-table-flat-lay-space-for-text-1939183168.jpg"
-            className="d-block w-100 img"
+            className="d-block w-100 h-1/5"
             alt="img2"
             style={imageStyle}
           />
           <div className="carousel-caption " style={carouselCaptionStyle}>
-         
+              <Fade top>
               <h2 className="heading">Healthy Fruits</h2>
               <p className="paragraph1">
                 HEALTHY <span className="span">ORGANIC</span>
               </p>
               <p className="paragraph2"> FOOD EVERYDAY</p>
-              <button className="button1" type="button">
+              <button className="bg-green-600 w-40 rounded-md p-2" type="button">
                 Shop Now
               </button>
- 
+              </Fade>
           </div>
         </div>
         <div className="carousel-item">
           <img
             src="https://media.istockphoto.com/id/1128687123/photo/shopping-bag-full-of-fresh-vegetables-and-fruits.jpg?s=1024x1024&w=is&k=20&c=ZP6MR_8ca51_wrOQFjp5HN0cK1TwmMHMc8sRZy9Dxn4="
-            className="d-block w-100 img"
-            alt="img3"
+            className="d-block w-100  h-1/5 "
             style={imageStyle}
+            alt="img3"
+           
           />
           <div className="carousel-caption " style={carouselCaptionStyle}>
-      
+            <Fade top>
               <h2 className="heading">All You Need</h2>
               <p className="paragraph1">
                 FRESH <span className="span">GROCERY</span>
               </p>
               <p className="paragraph2"> DESERVE TO EAT FOOD</p>
 
-              <button className="button1" type="button">
+              <button className="bg-green-600 w-40 rounded-md p-2" type="button">
                 Shop Now
               </button>
-
+              </Fade>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
+import * as Yup from 'yup';
 import {
   Alert,
   Avatar,
@@ -29,6 +30,8 @@ function Login() {
   const [password, setPassword] = useState<string>();
   const [message, setMessage] = useState<string>();
   const [open, setOpen] = useState<boolean>(false);
+  const [emailError, setEmailError] = useState<string>("");
+  const [passwordError, setPasswordError] = useState<string>("");  
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -49,8 +52,19 @@ function Login() {
     marginTop: "20px",
   };
 
+
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Email is required'),
+    password: Yup.string()
+      .required('Password is required')
+      .min(6, 'Password must be at least 6 characters'),
+  });
+
   async function handleLogin() {
     try {
+      await validationSchema.validate({ email, password }, { abortEarly: false });
       await axios
         .post("http://localhost:3000/user/login", {
           email: email,
@@ -81,7 +95,17 @@ function Login() {
             }, 5000);
           }
         });
-    } catch (error) {}
+    } 
+    catch (error) {
+      
+      // Handle validation errors
+      if (error instanceof Yup.ValidationError) {
+        error.inner.forEach(err => {
+          if (err.path === 'email') setEmailError(err.message);
+          if (err.path === 'password') setPasswordError(err.message);
+        });
+      }
+    }
   }
 
   useEffect(() => {
@@ -106,15 +130,24 @@ function Login() {
           <Typography variant="h5">SIGN IN</Typography>
           <Grid style={inputStyle}>
             <TextField
-              id="standard-basic"
               label="Email"
-              placeholder="Enter username"
+              placeholder="Enter email"
               variant="standard"
               fullWidth
-              required
-              error={false}
+              
+              error={!!emailError}
+              helperText={emailError}
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setEmailError("");
+              }}
+              InputLabelProps={{
+                style: { color: "black" } 
+              }}
+              FormHelperTextProps={{ 
+                style: { textAlign: "right" }
+              }}
             />
             <TextField
               id="standard-basic"
@@ -123,8 +156,21 @@ function Login() {
               variant="standard"
               fullWidth
               type="password"
-              required
-              onChange={(e) => setPassword(e.target.value)}
+              
+              error={!!passwordError}
+              helperText={passwordError}
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setPasswordError("");
+              }}
+              InputLabelProps={{
+                style: { color: "black" } 
+              }}
+              FormHelperTextProps={{ 
+                style: { textAlign: "right" }
+              }}
+              
             />
             <FormGroup>
               <FormControlLabel control={<Checkbox />} label="Remember me" />

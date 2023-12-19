@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Cart() {
+
   return (
     <div>
       <main className="container mx-auto my-auto h-screen">
@@ -38,7 +39,7 @@ function Cart() {
                     <span className="font-semibold">+</span>
                   </div>
                   <div className="pr-8">
-                    <span className="text-xs font-medium">$10.50</span>
+                    <span className="text-xs font-medium">$10.10</span>
                   </div>
                   <div>
                     <i className="fa fa-close text-xs font-medium"></i>

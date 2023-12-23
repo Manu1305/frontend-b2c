@@ -188,7 +188,7 @@ function Login() {
         </Grid>
         <Grid className="mt-4 text-left">
           <Typography>
-            <link className="curson-pointer"></link>Forgot password ..?
+            <Link to="/forgotpassword">Forgot password ..?</Link>
           </Typography>
 
           <Typography>
